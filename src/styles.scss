@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/saga-purple/theme.css";
+@import "primeng/resources/primeng.css";
+
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/*
+good ones down here
+@import "primeng/resources/themes/bootstrap4-dark-purple/theme.css";
+@import "primeng/resources/themes/md-dark-deeppurple/theme.css";
+@import "primeng/resources/themes/mdc-dark-deeppurple/theme.css";
+@import "primeng/resources/themes/lara-dark-purple/theme.css";
+@import "primeng/resources/themes/soho-dark/theme.css";
+@import "primeng/resources/themes/vela-purple/theme.css";
+@import "primeng/resources/themes/arya-purple/theme.css";
+
+
+maybe for light theme here?
+@import "primeng/resources/themes/md-light-deeppurple/theme.css";
+@import "primeng/resources/themes/lara-light-purple/theme.css";
+@import "primeng/resources/themes/mdc-light-deeppurple/theme.css";
+@import "primeng/resources/themes/soho-light/theme.css";
+
+crowd favorites V
+@import "primeng/resources/themes/saga-purple/theme.css";
+
+*/

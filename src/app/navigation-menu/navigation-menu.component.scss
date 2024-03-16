@@ -1,0 +1,37 @@
+:host ::ng-deep .p-menubar {
+  padding: 0;
+  // background-color: #9C27B0;
+  // background: rgb(107,34,195);
+  // background: linear-gradient(0deg, rgba(107,34,195,1) 0%, rgba(156,39,176,1) 100%);
+//   background: rgb(107,34,195);
+// background: linear-gradient(180deg, rgba(107,34,195,1) 0%, rgba(156,39,176,1) 90%, rgba(156,39,176,0.6643032212885154) 100%);
+background: rgb(107,34,195);
+background: linear-gradient(180deg, rgba(107,34,195,1) 0%, rgba(156,39,176,1) 70%, rgba(176,101,39,1) 100%);
+  border: 0;
+  border-radius: 0;
+}
+
+:host ::ng-deep .p-menubar-start {
+  height: 160px;
+}
+
+:host ::ng-deep .p-menuitem-content:hover {
+  background-color: transparent;
+}
+
+:host ::ng-deep .p-menubar .p-menuitem.p-focus > .p-menuitem-content {
+  background-color: transparent;
+}
+
+:host ::ng-deep .p-menuitem-icon {
+  color: yellow;
+}
+
+:host ::ng-deep .p-menuitem-text {
+  color: yellow;
+}
+
+:host ::ng-deep .p-submenu-icon{
+  color: yellow;
+}
+
