@@ -1,2 +1,18 @@
-<p>home works!</p>
-<p-button label="Submit"></p-button>
+<div id="homeContainer">
+  <div id="carouselContainer" (mousedown)="carouselMouseDown($event)" (mouseup)="carouselMouseUp($event, 4)">
+    <div id="unclickableCoat"></div>
+    <div id="childrenCarousel" class="flex" data-mouse-down-at="0" data-prev-percentage="0">
+      <img src="/assets/images/sample/kid1.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid2.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid3.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid1.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid2.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid3.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid1.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid2.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid3.jpg" draggable="false" class="carouselImage">
+      <img src="/assets/images/sample/kid1.jpg" draggable="false" class="carouselImage">
+    </div>
+  </div>
+</div>
+

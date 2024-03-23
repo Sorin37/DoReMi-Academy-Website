@@ -1,2 +1,10 @@
-<app-navigation-menu></app-navigation-menu>
-<router-outlet />
+<div id="mainContainer" class="flex flex-column">
+  <app-navigation-menu></app-navigation-menu>
+  <div class="flex flex-grow-1">
+    <app-side-background></app-side-background>
+    <div class="flex-grow-1">
+      <router-outlet  />
+    </div>
+    <app-side-background></app-side-background>
+  </div>
+</div>

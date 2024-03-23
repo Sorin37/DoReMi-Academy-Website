@@ -1,0 +1,36 @@
+#homeContainer {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+#carouselContainer {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+#childrenCarousel {
+  gap: 4vmin;
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  width: 30vw;
+  img {
+    width: 40vmin;
+    height: 30vmin;
+    object-fit: cover;
+    object-position: 50% 50%;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+#unclickableCoat {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}

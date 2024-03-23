@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { NavigationMenuComponent } from "./navigation-menu/navigation-menu.component";
+import { SideBackgroundComponent } from './side-background/side-background.component';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +12,8 @@ import { NavigationMenuComponent } from "./navigation-menu/navigation-menu.compo
     imports: [
         RouterOutlet,
         ButtonModule,
-        NavigationMenuComponent
+        NavigationMenuComponent,
+        SideBackgroundComponent
     ]
 })
 export class AppComponent {
