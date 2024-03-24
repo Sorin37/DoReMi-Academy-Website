@@ -8,60 +8,72 @@
     <div id="unclickableCoat"></div>
     <div
       id="childrenCarousel"
-      class="flex"
+      class="flex flex-column"
       data-mouse-down-at="0"
       data-prev-percentage="0"
     >
-      <img
-        src="/assets/images/sample/kid1.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid2.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid3.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid1.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid2.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid3.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid1.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid2.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid3.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
-      <img
-        src="/assets/images/sample/kid1.jpg"
-        draggable="false"
-        class="carouselImage"
-      />
+      <div class="film-band">
+        <ng-container *ngFor="let child of filmBandHoles">
+          <div class="film-band-hole"></div>
+        </ng-container>
+      </div>
+      <div class="flex">
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid2.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid3.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid2.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid3.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid2.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid3.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+      </div>
+      <div class="film-band">
+        <ng-container *ngFor="let child of filmBandHoles">
+          <div class="film-band-hole"></div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>

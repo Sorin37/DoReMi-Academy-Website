@@ -1,25 +1,35 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { max, retry } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [ButtonModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   maxDelta = 0;
   moveCarouselInterval: any;
   private carouselAutoMoveAnimationDuration: number = 2000;
   direction = -1;
+  filmBandHoles: Array<number> = [];
 
   ngOnInit() {
     this.maxDelta = document.getElementById('childrenCarousel')!.scrollWidth;
+    const vminSize = Math.min(window.innerWidth, window.innerHeight) / 100;
+    const numberOfHoles: number = Math.ceil(this.maxDelta / (6 * vminSize));
+    for (let i = 0; i < numberOfHoles; ++i) {
+      this.filmBandHoles.push(1);
+    }
+  }
+
+  ngAfterViewInit(): void {
     this.moveCarouselInterval = setInterval(() => {
       this.slightlyMoveCarousel();
-    }, this.carouselAutoMoveAnimationDuration); // Adjust the interval as per your requirement
+    }, this.carouselAutoMoveAnimationDuration);
   }
 
   startCarousel(event: MouseEvent) {
@@ -117,6 +127,12 @@ export class HomeComponent implements OnInit {
     let nextPercentage =
       Number($carousel.dataset['prevPercentage']) + percentage;
 
+    if (Number.isNaN(nextPercentage) || nextPercentage === undefined) {
+      nextPercentage = 0;
+      $carousel.dataset['prevPercentage'] = nextPercentage.toString();
+      return;
+    }
+
     //set borderlines
     const leftCoefficient =
       this.maxDelta / document.getElementById('unclickableCoat')!.clientWidth;
@@ -131,6 +147,7 @@ export class HomeComponent implements OnInit {
     nextPercentage = Math.min(0, nextPercentage);
 
     $carousel.dataset['percentage'] = String(nextPercentage);
+    $carousel.dataset['prevPercentage'] = nextPercentage.toString();
 
     $carousel.animate(
       { left: `${nextPercentage}%` },
@@ -140,8 +157,6 @@ export class HomeComponent implements OnInit {
         easing: 'ease-in-out',
       }
     );
-
-    $carousel.dataset['prevPercentage'] = nextPercentage.toString();
 
     let normalisedPercentage = (nextPercentage / carouselPercentageGrow) * 100;
     if (normalisedPercentage === 0 || normalisedPercentage === 100) {
