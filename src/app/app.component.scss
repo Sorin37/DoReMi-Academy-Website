@@ -6,4 +6,10 @@ app-side-background {
 #mainContainer {
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.displayed-page {
+  width: 70%;
 }

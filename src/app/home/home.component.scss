@@ -1,8 +1,11 @@
 #homeContainer {
   width: 100%;
   height: 100%;
-  background: rgb(117,90,145);
-  background: linear-gradient(180deg, rgba(117,90,145,1) 81%, rgba(137,120,155,1) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(117, 90, 145, 1) 60%,
+    rgba(137, 120, 155, 1) 100%
+  );
 }
 
 #carouselContainer {
@@ -52,4 +55,82 @@
   background-color: white;
   height: 2vmin;
   width: 2vmin;
+}
+
+:host ::ng-deep .main-card {
+  margin: 40px;
+  width: 75%;
+
+  .p-card {
+    background-color: pink;
+  }
+
+  .p-card-content {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+  }
+
+  .icon-div {
+    width: 100px;
+    height: 100px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .p-card {
+      background-color: rgb(117, 90, 145);
+      margin: 0;
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  .text-div {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+}
+
+:host ::ng-deep .main-card.reverse {
+  margin: 40px;
+  width: 75%;
+
+  .p-card {
+    background-color: pink;
+  }
+
+  .p-card-content {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 16px;
+    padding: 0;
+  }
+
+  .icon-div {
+    width: 100px;
+    height: 100px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .p-card {
+      background-color: rgb(117, 90, 145);
+      margin: 0;
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  .text-div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-grow: 1;
+  }
 }

@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { max, retry } from 'rxjs';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, CommonModule],
+  imports: [ButtonModule, CommonModule, CardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
