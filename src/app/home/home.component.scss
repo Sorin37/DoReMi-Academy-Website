@@ -63,6 +63,7 @@
 
   .p-card {
     background-color: pink;
+    box-shadow: 5px 5px 5px rgb(76, 57, 96);
   }
 
   .p-card-content {
@@ -85,6 +86,7 @@
       margin: 0;
       height: 100px;
       width: 100px;
+      box-shadow: none;
     }
   }
 

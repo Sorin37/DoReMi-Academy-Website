@@ -20,7 +20,7 @@ export class NavigationMenuComponent implements OnInit {
       },
       {
         label: 'Despre noi',
-        icon: 'pi pi-fw pi-pencil',
+        icon: 'pi pi-fw pi-users',
       },
       {
         label: 'Evenimente',
