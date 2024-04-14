@@ -11,4 +11,33 @@
 .location-container {
   width: 100%;
   padding: 40px;
+  position: relative;
+}
+
+.opening-date-container {
+  position: absolute;
+  top: 10px;
+  right: -160px;
+  animation-name: spin;
+  animation-duration: 10000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.opening-date-text {
+  position: absolute;
+  top: 62.5px;
+  right: -132.5px;
+  text-align: center;
+  font-weight: bold;
+  color: brown;
 }

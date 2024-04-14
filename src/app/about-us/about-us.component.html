@@ -1,6 +1,15 @@
 <div class="background">
-  xd
   <div class="location-container">
-    <google-map></google-map>
+    <google-map height="500px" width="100%" [center]="location" [zoom]="15">
+      <map-marker [position]="location" [options]="options"> </map-marker>
+    </google-map>
+    <div class="opening-date-container">
+      <img src="/assets/icons/sun.png" height="150" width="150" />
+    </div>
+    <div class="opening-date-text">
+      Înființat în
+      <br />
+      11 sept 2023
+    </div>
   </div>
 </div>
