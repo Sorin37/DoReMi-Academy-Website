@@ -21,6 +21,7 @@ export class NavigationMenuComponent implements OnInit {
       {
         label: 'Despre noi',
         icon: 'pi pi-fw pi-users',
+        routerLink: '/despre-noi',
       },
       {
         label: 'Evenimente',
