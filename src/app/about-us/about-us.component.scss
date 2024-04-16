@@ -17,9 +17,9 @@
 .opening-date-container {
   position: absolute;
   top: 10px;
-  right: -160px;
+  right: -170px;
   animation-name: spin;
-  animation-duration: 10000ms;
+  animation-duration: 25000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -36,8 +36,25 @@
 .opening-date-text {
   position: absolute;
   top: 62.5px;
-  right: -132.5px;
+  right: -142.5px;
   text-align: center;
   font-weight: bold;
   color: brown;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+}
+
+.near-map-text {
+  font-size: 4vw;
+  font-weight: bolder;
+  font-family: Brush Script MT, Brush Script Std, cursive;
+  color: orange;
+  -webkit-text-stroke: 3px yellow;
+}
+
+.h-8 {
+  height: 55%;
+}
+
+.h-4 {
+  height: 45%;
 }
