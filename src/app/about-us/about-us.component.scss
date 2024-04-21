@@ -58,3 +58,36 @@
 .h-4 {
   height: 45%;
 }
+
+.accordion-container {
+  margin: 40px;
+}
+
+:host ::ng-deep .p-accordion-header > a {
+  background-color: transparent !important;
+  border: solid rgb(60, 143, 217) 1px;
+  border-bottom: none;
+  color: yellow;
+}
+
+:host ::ng-deep .p-accordion > .p-element:last-child {
+  a {
+    border: solid rgb(60, 143, 217) 1px;
+  }
+}
+
+:host ::ng-deep .p-accordion-content {
+  background-color: transparent !important;
+  border: solid rgb(60, 143, 217) 1px;
+  color: yellow;
+  border-bottom: none;
+}
+
+:host ::ng-deep .p-accordion > .p-element:last-child {
+  .p-accordion-content {
+    background-color: transparent !important;
+    border: solid rgb(60, 143, 217) 1px;
+    color: yellow;
+    border-top: none;
+  }
+}
