@@ -51,6 +51,10 @@
   -webkit-text-stroke: 3px yellow;
 }
 
+.h-12 {
+  height: 100%;
+}
+
 .h-8 {
   height: 55%;
 }
@@ -109,3 +113,44 @@
 ul {
   list-style-type: circle;
 }
+
+.carousel-image {
+  object-fit: cover;
+}
+
+.pareri {
+  height: min(50vh, 66vw);
+  width: min(50vh, 66vw);
+}
+
+:host ::ng-deep .p-carousel-prev {
+  path {
+    fill: yellow;
+  }
+
+}
+
+:host ::ng-deep .p-carousel-next {
+  path {
+    fill: yellow;
+  }
+}
+
+:host ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev:enabled:hover {
+  background-color: #9C27B0;
+}
+
+:host ::ng-deep .p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
+  background-color: #9C27B0;
+}
+
+:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+  background-color: #9C27B0;
+  transform:scale(1);
+}
+
+:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+  background-color: pink;
+  transform:scale(0.5);
+}
+

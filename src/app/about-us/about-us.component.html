@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="accordion-container">
-    <p-accordion [multiple]="true" [activeIndex]="[0]">
+    <p-accordion [multiple]="true" [activeIndex]="[3]">
       <p-accordionTab header="Servicii oferite">
         <ul class="p-list">
           <li>transport de la școală la after-school</li>
@@ -71,6 +71,24 @@
           <li>Felul 2</li>
           <li>Gustare</li>
         </ul>
+      </p-accordionTab>
+      <p-accordionTab header="Locația">
+        <p-carousel
+          [value]="images"
+          [numVisible]="1"
+          [numScroll]="1"
+          [circular]="true"
+          [autoplayInterval]="3000"
+        >
+          <ng-template let-image pTemplate="item" class="text-center w-6 h-12">
+              <div class="flex justify-content-center align-content-center w-12 h-12 pareri">
+                <img
+                  src="assets/images/location/{{ image }}"
+                  class="carousel-image shadow-2"
+                />
+            </div>
+          </ng-template>
+        </p-carousel>
       </p-accordionTab>
     </p-accordion>
   </div>
