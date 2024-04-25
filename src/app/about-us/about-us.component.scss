@@ -35,7 +35,7 @@
 
 .opening-date-text {
   position: absolute;
-  top: 62.5px;
+  top: 65px;
   right: -142.5px;
   text-align: center;
   font-weight: bold;
@@ -90,4 +90,22 @@
     color: yellow;
     border-top: none;
   }
+}
+
+.no-dot-list {
+  list-style: none;
+}
+
+#jadoreLink {
+  border: none;
+  color: orange;
+  text-decoration: none;
+}
+
+#jadoreLink:hover {
+  color: orangered;
+}
+
+ul {
+  list-style-type: circle;
 }
