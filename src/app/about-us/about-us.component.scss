@@ -65,31 +65,15 @@
 
 :host ::ng-deep .p-accordion-header > a {
   background-color: transparent !important;
-  border: solid rgb(60, 143, 217) 1px;
-  border-bottom: none;
+  border: none;
   color: yellow;
-}
-
-:host ::ng-deep .p-accordion > .p-element:last-child {
-  a {
-    border: solid rgb(60, 143, 217) 1px;
-  }
+  font-size: 2rem;
 }
 
 :host ::ng-deep .p-accordion-content {
   background-color: transparent !important;
-  border: solid rgb(60, 143, 217) 1px;
   color: yellow;
-  border-bottom: none;
-}
-
-:host ::ng-deep .p-accordion > .p-element:last-child {
-  .p-accordion-content {
-    background-color: transparent !important;
-    border: solid rgb(60, 143, 217) 1px;
-    color: yellow;
-    border-top: none;
-  }
+  border: none;
 }
 
 .no-dot-list {
