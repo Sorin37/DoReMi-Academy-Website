@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-about-us',
   standalone: true,
-  imports: [GoogleMapsModule, AccordionModule, ButtonModule, CarouselModule],
+  imports: [GoogleMapsModule, AccordionModule, ButtonModule, CarouselModule, CardModule],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss',
 })
