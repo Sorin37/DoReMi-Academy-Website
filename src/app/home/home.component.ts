@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { max, retry } from 'rxjs';
 import { CardModule } from 'primeng/card';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, CommonModule, CardModule],
+  imports: [ButtonModule, CommonModule, CardModule, AnimateOnScrollModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
