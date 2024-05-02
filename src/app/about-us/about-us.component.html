@@ -45,6 +45,15 @@
     </div>
   </div>
   <div class="accordion-container">
+    <div class="contract-container">
+      <p-button (onClick)="download()" class="download-button"
+        ><i
+          class="pi pi-fw pi-download"
+          style="font-size: 1.5rem; color: yellow"
+        ></i>
+        &nbsp;Descarcă contractul
+      </p-button>
+    </div>
     <p-accordion [multiple]="true" [activeIndex]="[3]">
       <p-accordionTab header="Servicii oferite">
         <ul class="p-list">

@@ -8,7 +8,13 @@ import { CarouselModule } from 'primeng/carousel';
 @Component({
   selector: 'app-about-us',
   standalone: true,
-  imports: [GoogleMapsModule, AccordionModule, ButtonModule, CarouselModule, CardModule],
+  imports: [
+    GoogleMapsModule,
+    AccordionModule,
+    ButtonModule,
+    CarouselModule,
+    CardModule,
+  ],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss',
 })
@@ -45,4 +51,14 @@ export class AboutUsComponent {
     'TableWithPlanets.jpg',
     'Toys.jpg',
   ];
+
+  download() {
+    let link = document.createElement('a');
+    link.setAttribute('type', 'hidden');
+    link.href = 'assets/files/ContractEducationalDoReMi.docx';
+    link.download = 'Contract educational DoReMi.docx';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
 }

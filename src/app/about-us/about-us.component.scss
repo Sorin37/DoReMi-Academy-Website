@@ -61,6 +61,7 @@
 
 .accordion-container {
   margin: 40px;
+  position: relative;
 }
 
 :host ::ng-deep .p-accordion-header > a {
@@ -107,7 +108,6 @@ ul {
   path {
     fill: yellow;
   }
-
 }
 
 :host ::ng-deep .p-carousel-next {
@@ -117,21 +117,31 @@ ul {
 }
 
 :host ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev:enabled:hover {
-  background-color: #9C27B0;
+  background-color: #9c27b0;
 }
 
 :host ::ng-deep .p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
-  background-color: #9C27B0;
+  background-color: #9c27b0;
 }
 
-:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
-  background-color: #9C27B0;
-  transform:scale(1);
+:host
+  ::ng-deep
+  .p-carousel
+  .p-carousel-indicators
+  .p-carousel-indicator.p-highlight
+  button {
+  background-color: #9c27b0;
+  transform: scale(1);
 }
 
-:host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+:host
+  ::ng-deep
+  .p-carousel
+  .p-carousel-indicators
+  .p-carousel-indicator
+  button {
   background-color: pink;
-  transform:scale(0.5);
+  transform: scale(0.5);
 }
 
 :host ::ng-deep .contact-container {
@@ -143,4 +153,20 @@ ul {
 
 .map-container {
   box-shadow: 10px 10px 10px rgb(76, 57, 96);
+}
+
+.contract-container {
+  position: absolute;
+  top: 20px;
+  right: 0;
+
+}
+
+:host ::ng-deep .download-button {
+  button {
+    box-shadow: 5px 5px 5px rgb(76, 57, 96);
+    z-index: 1;
+    font-size: 1.5rem;
+    color: yellow;
+  }
 }
