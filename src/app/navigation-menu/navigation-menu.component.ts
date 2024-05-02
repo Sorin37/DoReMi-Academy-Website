@@ -15,10 +15,6 @@ export class NavigationMenuComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: 'File',
-        icon: 'pi pi-fw pi-file',
-      },
-      {
         label: 'Despre noi',
         icon: 'pi pi-fw pi-users',
         routerLink: '/despre-noi',
@@ -27,10 +23,6 @@ export class NavigationMenuComponent implements OnInit {
         label: 'Evenimente',
         icon: 'pi pi-fw pi-calendar',
         routerLink: '/evenimente',
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-fw pi-user',
       }
     ];
   }
