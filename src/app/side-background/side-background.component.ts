@@ -1,13 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  ViewChild,
-  input,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { lights } from 'three/examples/jsm/nodes/lighting/LightsNode';
 
 @Component({
   selector: 'app-side-background',
@@ -37,26 +31,51 @@ export class SideBackgroundComponent implements AfterViewInit {
     camera.position.z = 1;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(230/255, 112/255, 147/255);
+    scene.background = new THREE.Color(230 / 255, 112 / 255, 147 / 255);
 
     const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
     const material = new THREE.MeshNormalMaterial();
 
     const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    // scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(width, height);
-    renderer.setAnimationLoop(animation);
-    this.mainContainer.nativeElement.appendChild(renderer.domElement);
+    // any lighting?
+    const light = new THREE.AmbientLight(0xFFFFFF, 2);
+    scene.add(light);
 
-    // animation
+    const loader = new GLTFLoader();
 
-    function animation(time: number) {
-      mesh.rotation.x = time / 2000;
-      mesh.rotation.y = time / 1000;
+    loader.load(
+      'assets/3d_models/chair/gltf/chair.gltf',
+       (gltf) => {
+        console.log('it worked')
+        gltf.scene.scale.set(0.005, 0.005, 0.005);
+        scene.add(gltf.scene);
 
-      renderer.render(scene, camera);
-    }
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(width, height);
+        renderer.setAnimationLoop(animation);
+        this.mainContainer.nativeElement.appendChild(renderer.domElement);
+
+        // animation
+
+        function animation(time: number) {
+          // mesh.rotation.x = time / 2000;
+          // mesh.rotation.y = time / 1000;
+
+          gltf.scene.rotation.x = time / 2000;
+          gltf.scene.rotation.y = time / 1000;
+
+          renderer.render(scene, camera);
+        }
+      },
+      undefined,
+      function (error) {
+        console.log('a crapat xd');
+        console.error(error);
+      }
+    );
+
+
   }
 }
