@@ -1,126 +1,143 @@
-<div class="background">
-  <div class="location-container">
-    <div class="flex flex-row w-full">
-      <div
-        class="w-6 flex flex-column justify-content-around contact-container"
-      >
-        <div class="flex flex-row justify-content-center">
-          <p-card class="w-8">
-            <div class="flex flex-row align-content-center gap-3">
-              <div>
-                <i class="pi pi-fw pi-phone" style="font-size: 2rem"></i>
-              </div>
-              <div class="flex flex-row align-items-center text-xl">
-                0734 214 466
-              </div>
-            </div>
-          </p-card>
-        </div>
-        <div class="flex flex-row justify-content-center">
-          <p-card class="w-8">
-            <div class="flex flex-row align-content-center gap-3">
-              <div>
-                <i class="pi pi-fw pi-envelope" style="font-size: 2rem"></i>
-              </div>
-              <div class="flex flex-row align-items-center text-xl">
-                doremibrasov&commat;gmail.com
-              </div>
-            </div></p-card
-          >
-        </div>
-      </div>
-      <div class="w-6 map-container">
-        <google-map height="50vh" width="100%" [center]="location" [zoom]="15">
-          <map-marker [position]="location" [options]="options"> </map-marker>
-        </google-map>
-      </div>
-    </div>
-    <div class="opening-date-container">
-      <img src="/assets/icons/sun.png" height="160" width="160" />
-    </div>
-    <div class="opening-date-text">
-      Înființat în
-      <br />
-      11 sept 2023
-    </div>
-  </div>
-  <div class="accordion-container">
-    <div class="contract-container">
-      <p-button (onClick)="download()" class="download-button"
-        ><i
-          class="pi pi-fw pi-download"
-          style="font-size: 1.5rem; color: yellow"
-        ></i>
-        &nbsp;Descarcă contractul
-      </p-button>
-    </div>
-    <p-accordion [multiple]="true" [activeIndex]="[]">
-      <p-accordionTab header="Servicii oferite">
-        <ul class="p-list">
-          <li>transport de la școală la after-school</li>
-          <li>masa de prânz în regim catering</li>
-          <li>ajutor în efectuarea temelor</li>
-          <li>activități reacreative</li>
-          <li>ateliere muzicale</li>
-          <li>club de lectură zilnic</li>
-        </ul>
-      </p-accordionTab>
-      <p-accordionTab header="Prețuri">
-        <p>Program normal:</p>
-        <ul class="no-dot-list">
-          <li>Program: 11:30 - 17:30</li>
-          <li>Preț: 1000 RON pe lună</li>
-        </ul>
-        <p>Program de vacanță:</p>
-        <ul class="no-dot-list">
-          <li>Program: 8:30 - 17:30</li>
-          <li>Preț: 1000 RON pe lună + 20 RON pentru fiecare zi de vacanță</li>
-        </ul>
-        <p>
-          Se oferă următoarele reduceri pentru plata în avans a taxei de
-          școlarizare:
-        </p>
-        <ul class="no-dot-list">
-          <li>plata trimestrială: 5% reducere</li>
-          <li>plata semestrială: 10% reducere</li>
-          <li>plata anuală: 15% reducere</li>
-        </ul>
-        <p>Se oferă o reducere de 10% pentru cel de al doilea copil înscris</p>
-      </p-accordionTab>
-      <p-accordionTab header="Masa de prânz">
-        <p>
-          Masa este oferită de către
-          <a id="jadoreLink" href="https://jadorebistro.ro/" target="_blank"
-            >J'Adore Bistro Brașov</a
-          >
-          și constă în:
-        </p>
-        <ul>
-          <li>Felul 1 (ciorbiță)</li>
-          <li>Felul 2</li>
-          <li>Gustare</li>
-        </ul>
-      </p-accordionTab>
-      <p-accordionTab header="Locația">
-        <p-carousel
-          [value]="images"
-          [numVisible]="1"
-          [numScroll]="1"
-          [circular]="true"
-          [autoplayInterval]="3000"
+<div class="flex flex-row">
+  <app-side-background></app-side-background>
+  <div class="background">
+    <div class="location-container">
+      <div class="flex flex-row w-full">
+        <div
+          class="w-6 flex flex-column justify-content-around contact-container"
         >
-          <ng-template let-image pTemplate="item" class="text-center w-6 h-12">
-            <div
-              class="flex justify-content-center align-content-center w-12 h-12 pareri"
+          <div class="flex flex-row justify-content-center">
+            <p-card class="w-8">
+              <div class="flex flex-row align-content-center gap-3">
+                <div>
+                  <i class="pi pi-fw pi-phone" style="font-size: 2rem"></i>
+                </div>
+                <div class="flex flex-row align-items-center text-xl">
+                  0734 214 466
+                </div>
+              </div>
+            </p-card>
+          </div>
+          <div class="flex flex-row justify-content-center">
+            <p-card class="w-8">
+              <div class="flex flex-row align-content-center gap-3">
+                <div>
+                  <i class="pi pi-fw pi-envelope" style="font-size: 2rem"></i>
+                </div>
+                <div class="flex flex-row align-items-center text-xl">
+                  doremibrasov&commat;gmail.com
+                </div>
+              </div></p-card
             >
-              <img
-                src="assets/images/location/{{ image }}"
-                class="carousel-image shadow-2"
-              />
-            </div>
-          </ng-template>
-        </p-carousel>
-      </p-accordionTab>
-    </p-accordion>
+          </div>
+        </div>
+        <div class="w-6 map-container">
+          <google-map
+            height="50vh"
+            width="100%"
+            [center]="location"
+            [zoom]="15"
+          >
+            <map-marker [position]="location" [options]="options"> </map-marker>
+          </google-map>
+        </div>
+      </div>
+      <div class="opening-date-container">
+        <img src="/assets/icons/sun.png" height="160" width="160" />
+      </div>
+      <div class="opening-date-text">
+        Înființat în
+        <br />
+        11 sept 2023
+      </div>
+    </div>
+    <div class="accordion-container">
+      <div class="contract-container">
+        <p-button (onClick)="download()" class="download-button"
+          ><i
+            class="pi pi-fw pi-download"
+            style="font-size: 1.5rem; color: yellow"
+          ></i>
+          &nbsp;Descarcă contractul
+        </p-button>
+      </div>
+      <p-accordion [multiple]="true" [activeIndex]="[]">
+        <p-accordionTab header="Servicii oferite">
+          <ul class="p-list">
+            <li>transport de la școală la after-school</li>
+            <li>masa de prânz în regim catering</li>
+            <li>ajutor în efectuarea temelor</li>
+            <li>activități reacreative</li>
+            <li>ateliere muzicale</li>
+            <li>club de lectură zilnic</li>
+          </ul>
+        </p-accordionTab>
+        <p-accordionTab header="Prețuri">
+          <p>Program normal:</p>
+          <ul class="no-dot-list">
+            <li>Program: 11:30 - 17:30</li>
+            <li>Preț: 1000 RON pe lună</li>
+          </ul>
+          <p>Program de vacanță:</p>
+          <ul class="no-dot-list">
+            <li>Program: 8:30 - 17:30</li>
+            <li>
+              Preț: 1000 RON pe lună + 20 RON pentru fiecare zi de vacanță
+            </li>
+          </ul>
+          <p>
+            Se oferă următoarele reduceri pentru plata în avans a taxei de
+            școlarizare:
+          </p>
+          <ul class="no-dot-list">
+            <li>plata trimestrială: 5% reducere</li>
+            <li>plata semestrială: 10% reducere</li>
+            <li>plata anuală: 15% reducere</li>
+          </ul>
+          <p>
+            Se oferă o reducere de 10% pentru cel de al doilea copil înscris
+          </p>
+        </p-accordionTab>
+        <p-accordionTab header="Masa de prânz">
+          <p>
+            Masa este oferită de către
+            <a id="jadoreLink" href="https://jadorebistro.ro/" target="_blank"
+              >J'Adore Bistro Brașov</a
+            >
+            și constă în:
+          </p>
+          <ul>
+            <li>Felul 1 (ciorbiță)</li>
+            <li>Felul 2</li>
+            <li>Gustare</li>
+          </ul>
+        </p-accordionTab>
+        <p-accordionTab header="Locația">
+          <p-carousel
+            [value]="images"
+            [numVisible]="1"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="3000"
+          >
+            <ng-template
+              let-image
+              pTemplate="item"
+              class="text-center w-6 h-12"
+            >
+              <div
+                class="flex justify-content-center align-content-center w-12 h-12 pareri"
+              >
+                <img
+                  src="assets/images/location/{{ image }}"
+                  class="carousel-image shadow-2"
+                />
+              </div>
+            </ng-template>
+          </p-carousel>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
   </div>
+  <app-side-background></app-side-background>
 </div>

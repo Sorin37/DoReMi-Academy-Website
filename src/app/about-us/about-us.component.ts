@@ -4,6 +4,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
+import { SideBackgroundComponent } from '../side-background/side-background.component';
 
 @Component({
   selector: 'app-about-us',
@@ -14,6 +15,7 @@ import { CarouselModule } from 'primeng/carousel';
     ButtonModule,
     CarouselModule,
     CardModule,
+    SideBackgroundComponent
   ],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss',

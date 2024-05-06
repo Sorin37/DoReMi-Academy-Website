@@ -3,11 +3,12 @@ import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
+import { SideBackgroundComponent } from '../side-background/side-background.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, CommonModule, CardModule, AnimateOnScrollModule],
+  imports: [ButtonModule, CommonModule, CardModule, AnimateOnScrollModule, SideBackgroundComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
