@@ -17,13 +17,12 @@ export class SideBackgroundComponent implements AfterViewInit {
   @ViewChild('mainContainer')
   mainContainer!: ElementRef;
 
-  constructor(private el: ElementRef) {
-    this.width = el.nativeElement.offsetWidth;
-    this.height = el.nativeElement.offsetHeight;
-  }
   ngAfterViewInit(): void {
-    const width = this.width,
-      height = this.height;
+    const width = this.mainContainer.nativeElement.clientWidth,
+      height = this.mainContainer.nativeElement.scrollHeight;
+
+    console.log(width, height);
+    console.log(this.mainContainer);
 
     // init
 
@@ -40,21 +39,25 @@ export class SideBackgroundComponent implements AfterViewInit {
     // scene.add(mesh);
 
     // any lighting?
-    const light = new THREE.AmbientLight(0xFFFFFF, 2);
+    const light = new THREE.AmbientLight(0xffffff, 3);
     scene.add(light);
 
+    const tanFOV = Math.tan(((Math.PI / 180) * camera.fov) / 2);
+    const initialHeight = height;
+
+    //loading model
     const loader = new GLTFLoader();
 
     loader.load(
-      'assets/3d_models/chair/gltf/chair.gltf',
-       (gltf) => {
-        console.log('it worked')
-        gltf.scene.scale.set(0.005, 0.005, 0.005);
+      'assets/3d_models/musical_note/BakedMusicalNote.gltf',
+      (gltf) => {
+        gltf.scene.scale.set(0.0005, 0.0005, 0.0005);
         scene.add(gltf.scene);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(width, height);
+
         renderer.setAnimationLoop(animation);
+
         this.mainContainer.nativeElement.appendChild(renderer.domElement);
 
         // animation
@@ -66,16 +69,29 @@ export class SideBackgroundComponent implements AfterViewInit {
           gltf.scene.rotation.x = time / 2000;
           gltf.scene.rotation.y = time / 1000;
 
+          const mainContainer =
+            document.getElementsByClassName('main-container')[0];
+
+          // update scene size
+          renderer.setSize(
+            mainContainer.clientWidth,
+            mainContainer.clientHeight,
+          );
+
+          // update camera
+          camera.aspect =
+            mainContainer.clientWidth / mainContainer.clientHeight;
+          camera.fov = (360 / Math.PI) * Math.atan(tanFOV * (mainContainer.clientHeight/initialHeight));
+
+          camera.updateProjectionMatrix();
+
           renderer.render(scene, camera);
         }
       },
       undefined,
       function (error) {
-        console.log('a crapat xd');
-        console.error(error);
+        console.error('Failed to load 3D model');
       }
     );
-
-
   }
 }
