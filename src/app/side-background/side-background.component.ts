@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { lights } from 'three/examples/jsm/nodes/lighting/LightsNode';
+import * as CANNON from 'cannon';
 
 @Component({
   selector: 'app-side-background',
@@ -17,42 +17,45 @@ export class SideBackgroundComponent implements AfterViewInit {
   @ViewChild('mainContainer')
   mainContainer!: ElementRef;
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
+    const world = new CANNON.World();
+    world.gravity = new CANNON.Vec3(0, -0.005, 0);
+
     const width = this.mainContainer.nativeElement.clientWidth,
       height = this.mainContainer.nativeElement.scrollHeight;
 
-    console.log(width, height);
-    console.log(this.mainContainer);
-
     // init
-
     const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
     camera.position.z = 1;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(230 / 255, 112 / 255, 147 / 255);
 
-    const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-    const material = new THREE.MeshNormalMaterial();
-
-    const mesh = new THREE.Mesh(geometry, material);
-    // scene.add(mesh);
-
     // any lighting?
     const light = new THREE.AmbientLight(0xffffff, 3);
     scene.add(light);
 
-    const tanFOV = Math.tan(((Math.PI / 180) * camera.fov) / 2);
-    const initialHeight = height;
-
     //loading model
     const loader = new GLTFLoader();
+
+    const tanFOV = Math.tan(((Math.PI / 180) * camera.fov) / 2);
+    const initialHeight = height;
 
     loader.load(
       'assets/3d_models/musical_note/BakedMusicalNote.gltf',
       (gltf) => {
         gltf.scene.scale.set(0.0005, 0.0005, 0.0005);
-        scene.add(gltf.scene);
+        let musical_note = gltf.scene;
+
+        scene.add(musical_note);
+
+        // cannon.js
+        const shape = new CANNON.Body({
+          mass: 1,
+          shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
+          position: new CANNON.Vec3(0, 0, 0)
+        });
+        world.addBody(shape);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
 
@@ -60,11 +63,17 @@ export class SideBackgroundComponent implements AfterViewInit {
 
         this.mainContainer.nativeElement.appendChild(renderer.domElement);
 
-        // animation
 
+
+        // animation
+        const timeStep = 1 / 60;
         function animation(time: number) {
+          world.step(timeStep);
           // mesh.rotation.x = time / 2000;
           // mesh.rotation.y = time / 1000;
+
+          musical_note.position.copy(shape.position);
+          musical_note.quaternion.copy(shape.quaternion);
 
           gltf.scene.rotation.x = time / 2000;
           gltf.scene.rotation.y = time / 1000;
@@ -75,13 +84,15 @@ export class SideBackgroundComponent implements AfterViewInit {
           // update scene size
           renderer.setSize(
             mainContainer.clientWidth,
-            mainContainer.clientHeight,
+            mainContainer.clientHeight
           );
 
           // update camera
           camera.aspect =
             mainContainer.clientWidth / mainContainer.clientHeight;
-          camera.fov = (360 / Math.PI) * Math.atan(tanFOV * (mainContainer.clientHeight/initialHeight));
+          camera.fov =
+            (360 / Math.PI) *
+            Math.atan(tanFOV * (mainContainer.clientHeight / initialHeight));
 
           camera.updateProjectionMatrix();
 
