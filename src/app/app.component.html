@@ -1,6 +1,8 @@
 <div id="mainContainer" class="flex flex-column">
   <app-navigation-menu></app-navigation-menu>
-  <div class="displayed-page">
-    <router-outlet />
+  <div class="flex">
+    <app-side-background></app-side-background>
+    <div class="displayed-page"><router-outlet /></div>
+    <app-side-background></app-side-background>
   </div>
 </div>

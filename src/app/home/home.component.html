@@ -1,203 +1,198 @@
-<div class="flex flex-row">
-  <app-side-background></app-side-background>
-  <div id="homeContainer">
+<div id="homeContainer">
+  <div
+    id="carouselContainer"
+    (mousedown)="startCarousel($event)"
+    (mouseleave)="stopCarousel()"
+    (mouseup)="stopCarousel()"
+  >
+    <div id="unclickableCoat"></div>
     <div
-      id="carouselContainer"
-      (mousedown)="startCarousel($event)"
-      (mouseleave)="stopCarousel()"
-      (mouseup)="stopCarousel()"
+      id="childrenCarousel"
+      class="flex flex-column"
+      data-mouse-down-at="0"
+      data-prev-percentage="0"
     >
-      <div id="unclickableCoat"></div>
-      <div
-        id="childrenCarousel"
-        class="flex flex-column"
-        data-mouse-down-at="0"
-        data-prev-percentage="0"
-      >
-        <div class="film-band">
-          <ng-container *ngFor="let child of filmBandHoles">
-            <div class="film-band-hole"></div>
-          </ng-container>
-        </div>
-        <div class="flex">
-          <img
-            src="/assets/images/sample/kid1.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid2.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid3.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid1.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid2.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid3.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid1.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid2.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid3.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-          <img
-            src="/assets/images/sample/kid1.jpg"
-            draggable="false"
-            class="carouselImage"
-          />
-        </div>
-        <div class="film-band">
-          <ng-container *ngFor="let child of filmBandHoles">
-            <div class="film-band-hole"></div>
-          </ng-container>
-        </div>
+      <div class="film-band">
+        <ng-container *ngFor="let child of filmBandHoles">
+          <div class="film-band-hole"></div>
+        </ng-container>
       </div>
-    </div>
-
-    <div class="flex flex-column">
-      <div
-        pAnimateOnScroll
-        enterClass="fadeinleft"
-        leaveClass="fadeoutleft"
-        class="main-card animation-duration-1000 animation-ease-in-out"
-      >
-        <p-card>
-          <div class="icon-div align-self-center">
-            <p-card>
-              <img src="/assets/icons/guitarIcon.png" />
-            </p-card>
-          </div>
-          <div class="text-div">
-            <span>
-              Așa cum spune Emil Cioran "de n-am fi avut suflet, ni l-ar fi
-              creat muzica", iar acest suflet nu are cum altfel să înflorească
-              și să supraviețuiască dacă nu cu dragoste, bunătate si muzică. Cu
-              gândul acesta am creat Centrul Educațional, After-school
-              <b>
-                <span [style.color]="'red'">Do</span>
-                <span [style.color]="'rgb(255, 100, 0)'">Re</span>
-                <span [style.color]="'yellow'">Mi </span>
-                <span [style.color]="'green'">A</span>
-                <span [style.color]="'blue'">ca</span>
-                <span [style.color]="'indigo'">de</span>
-                <span [style.color]="'violet'">my</span>
-              </b>
-              Brașov.
-            </span>
-          </div>
-        </p-card>
+      <div class="flex">
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid2.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid3.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid2.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid3.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid2.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid3.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
+        <img
+          src="/assets/images/sample/kid1.jpg"
+          draggable="false"
+          class="carouselImage"
+        />
       </div>
-
-      <div
-        pAnimateOnScroll
-        enterClass="fadeinright"
-        leaveClass="fadeoutright"
-        class="main-card align-self-end reverse animation-duration-1000 animation-ease-in-out"
-      >
-        <p-card>
-          <div class="icon-div align-self-center">
-            <p-card>
-              <img src="/assets/icons/heartBook.png" />
-            </p-card>
-          </div>
-          <div class="text-div">
-            Conceptul are la bază viziunea noastră despre educație și dorința de
-            a le oferi copiilor noștri și celorlalți copii un mediu de
-            încredere, inspirațional și muzical, o atmosferă caldă cât mai
-            prielnică pentru buna dezvoltare a acestora.
-          </div>
-        </p-card>
-      </div>
-
-      <div
-        pAnimateOnScroll
-        enterClass="fadeinleft"
-        leaveClass="fadeoutleft"
-        class="main-card animation-duration-1000 animation-ease-in-out"
-      >
-        <p-card>
-          <div class="icon-div align-self-center">
-            <p-card>
-              <img src="/assets/icons/playground.png" />
-            </p-card>
-          </div>
-          <div class="text-div">
-            Programul de after school este conceput astfel să oferim copiilor o
-            a doua casă, în care ei să crească și să se dezvolte armonios, să
-            acorde timp pentru efectuarea temelor dar și pentru dezvoltarea
-            personală prin recreere și jocuri educative.
-          </div>
-        </p-card>
-      </div>
-
-      <div
-        pAnimateOnScroll
-        enterClass="fadeinright"
-        leaveClass="fadeoutright"
-        class="main-card align-self-end reverse animation-duration-1000 animation-ease-in-out"
-      >
-        <p-card>
-          <div class="icon-div align-self-center">
-            <p-card>
-              <img src="/assets/icons/furniture.png" />
-            </p-card>
-          </div>
-          <div class="text-div">
-            Spațiul este special amenajat cu săli de clasă mobilate și utilate
-            pentru nevoile lor.
-          </div>
-        </p-card>
-      </div>
-
-      <div
-        pAnimateOnScroll
-        enterClass="fadeinleft"
-        leaveClass="fadeoutleft"
-        class="main-card animation-duration-1000 animation-ease-in-out"
-      >
-        <p-card>
-          <div class="icon-div align-self-center">
-            <p-card>
-              <img src="/assets/icons/teacher.png" />
-            </p-card>
-          </div>
-          <div class="text-div">
-            Echipa este formată din cadre didactice de specialitate, oameni
-            pasionați cu idei sclipitoare. Avem proiecte atractive ce îi vor
-            provoca pe copii să își descopere în fiecare zi emoțiile și trăirile
-            pe care le vor putea folosi în cel mai constructiv mod posibil
-            pentru a le contura personalitatea. Îi ajutăm în dezvoltarea
-            creativității și le vom îndruma inteligența nativă spre potențialul
-            ei maxim.
-          </div>
-        </p-card>
+      <div class="film-band">
+        <ng-container *ngFor="let child of filmBandHoles">
+          <div class="film-band-hole"></div>
+        </ng-container>
       </div>
     </div>
   </div>
-  <app-side-background></app-side-background>
+
+  <div class="flex flex-column">
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinleft"
+      leaveClass="fadeoutleft"
+      class="main-card animation-duration-1000 animation-ease-in-out"
+    >
+      <p-card>
+        <div class="icon-div align-self-center">
+          <p-card>
+            <img src="/assets/icons/guitarIcon.png" />
+          </p-card>
+        </div>
+        <div class="text-div">
+          <span>
+            Așa cum spune Emil Cioran "de n-am fi avut suflet, ni l-ar fi creat
+            muzica", iar acest suflet nu are cum altfel să înflorească și să
+            supraviețuiască dacă nu cu dragoste, bunătate si muzică. Cu gândul
+            acesta am creat Centrul Educațional, After-school
+            <b>
+              <span [style.color]="'red'">Do</span>
+              <span [style.color]="'rgb(255, 100, 0)'">Re</span>
+              <span [style.color]="'yellow'">Mi </span>
+              <span [style.color]="'green'">A</span>
+              <span [style.color]="'blue'">ca</span>
+              <span [style.color]="'indigo'">de</span>
+              <span [style.color]="'violet'">my</span>
+            </b>
+            Brașov.
+          </span>
+        </div>
+      </p-card>
+    </div>
+
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinright"
+      leaveClass="fadeoutright"
+      class="main-card align-self-end reverse animation-duration-1000 animation-ease-in-out"
+    >
+      <p-card>
+        <div class="icon-div align-self-center">
+          <p-card>
+            <img src="/assets/icons/heartBook.png" />
+          </p-card>
+        </div>
+        <div class="text-div">
+          Conceptul are la bază viziunea noastră despre educație și dorința de a
+          le oferi copiilor noștri și celorlalți copii un mediu de încredere,
+          inspirațional și muzical, o atmosferă caldă cât mai prielnică pentru
+          buna dezvoltare a acestora.
+        </div>
+      </p-card>
+    </div>
+
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinleft"
+      leaveClass="fadeoutleft"
+      class="main-card animation-duration-1000 animation-ease-in-out"
+    >
+      <p-card>
+        <div class="icon-div align-self-center">
+          <p-card>
+            <img src="/assets/icons/playground.png" />
+          </p-card>
+        </div>
+        <div class="text-div">
+          Programul de after school este conceput astfel să oferim copiilor o a
+          doua casă, în care ei să crească și să se dezvolte armonios, să acorde
+          timp pentru efectuarea temelor dar și pentru dezvoltarea personală
+          prin recreere și jocuri educative.
+        </div>
+      </p-card>
+    </div>
+
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinright"
+      leaveClass="fadeoutright"
+      class="main-card align-self-end reverse animation-duration-1000 animation-ease-in-out"
+    >
+      <p-card>
+        <div class="icon-div align-self-center">
+          <p-card>
+            <img src="/assets/icons/furniture.png" />
+          </p-card>
+        </div>
+        <div class="text-div">
+          Spațiul este special amenajat cu săli de clasă mobilate și utilate
+          pentru nevoile lor.
+        </div>
+      </p-card>
+    </div>
+
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinleft"
+      leaveClass="fadeoutleft"
+      class="main-card animation-duration-1000 animation-ease-in-out"
+    >
+      <p-card>
+        <div class="icon-div align-self-center">
+          <p-card>
+            <img src="/assets/icons/teacher.png" />
+          </p-card>
+        </div>
+        <div class="text-div">
+          Echipa este formată din cadre didactice de specialitate, oameni
+          pasionați cu idei sclipitoare. Avem proiecte atractive ce îi vor
+          provoca pe copii să își descopere în fiecare zi emoțiile și trăirile
+          pe care le vor putea folosi în cel mai constructiv mod posibil pentru
+          a le contura personalitatea. Îi ajutăm în dezvoltarea creativității și
+          le vom îndruma inteligența nativă spre potențialul ei maxim.
+        </div>
+      </p-card>
+    </div>
+  </div>
 </div>
