@@ -9,6 +9,10 @@ body {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 /*
 good ones down here
 @import "primeng/resources/themes/bootstrap4-dark-purple/theme.css";
