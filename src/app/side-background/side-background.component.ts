@@ -24,7 +24,7 @@ export class SideBackgroundComponent implements AfterViewInit {
 
 function musicalNotes(mainContainer: ElementRef) {
   const world = new CANNON.World();
-  world.gravity = new CANNON.Vec3(0, -0.01, 0);
+  world.gravity = new CANNON.Vec3(0, -0.1, 0);
 
   const width = mainContainer.nativeElement.clientWidth,
     height = mainContainer.nativeElement.scrollHeight;
@@ -52,13 +52,17 @@ function musicalNotes(mainContainer: ElementRef) {
       gltf.scene.scale.set(0.0005, 0.0005, 0.0005);
       let musical_note = gltf.scene;
 
+      const vFOV = (camera.fov * Math.PI) / 180;
+      const h = 2 * Math.tan(vFOV / 2) * Math.abs(camera.position.z);
+      const w = h * camera.aspect;
+
       scene.add(musical_note);
 
       // cannon.js
       const shape = new CANNON.Body({
         mass: 1,
         shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
-        position: new CANNON.Vec3(0, 0, 0),
+        position: new CANNON.Vec3(w / 2, h / 2, 0),
       });
       world.addBody(shape);
 
@@ -68,31 +72,42 @@ function musicalNotes(mainContainer: ElementRef) {
 
       mainContainer.nativeElement.appendChild(renderer.domElement);
 
+      // init objects and physics array
+      // objectsPhysicsList = [];
+
       // animation
       const timeStep = 1 / 60;
+      let applied = false;
+
       function animation(time: number) {
         world.step(timeStep);
         // mesh.rotation.x = time / 2000;
         // mesh.rotation.y = time / 1000;
 
+        updateObjectsPhysics();
+
         musical_note.position.copy(shape.position);
         musical_note.quaternion.copy(shape.quaternion);
 
-        gltf.scene.rotation.x = time / 2000;
-        gltf.scene.rotation.y = time / 1000;
+        if (!applied) {
+          applied = true;
+          shape.applyForce(
+            new CANNON.Vec3(-1 * 6, -2, 0),
+            new CANNON.Vec3(0, 0, 0)
+          );
+        }
+
+        // gltf.scene.rotation.x = time / 2000;
+        // gltf.scene.rotation.y = time / 1000;
 
         const mainContainer =
           document.getElementsByClassName('main-container')[0];
 
         // update scene size
-        renderer.setSize(
-          mainContainer.clientWidth,
-          mainContainer.clientHeight
-        );
+        renderer.setSize(mainContainer.clientWidth, mainContainer.clientHeight);
 
         // update camera
-        camera.aspect =
-          mainContainer.clientWidth / mainContainer.clientHeight;
+        camera.aspect = mainContainer.clientWidth / mainContainer.clientHeight;
         camera.fov =
           (360 / Math.PI) *
           Math.atan(tanFOV * (mainContainer.clientHeight / initialHeight));
@@ -108,3 +123,5 @@ function musicalNotes(mainContainer: ElementRef) {
     }
   );
 }
+
+function updateObjectsPhysics() {}
