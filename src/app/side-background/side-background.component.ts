@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import * as CANNON from 'cannon';
+import { create } from 'node:domain';
 
 @Component({
   selector: 'app-side-background',
@@ -23,9 +23,6 @@ export class SideBackgroundComponent implements AfterViewInit {
 }
 
 function musicalNotes(mainContainer: ElementRef) {
-  const world = new CANNON.World();
-  world.gravity = new CANNON.Vec3(0, -0.1, 0);
-
   const width = mainContainer.nativeElement.clientWidth,
     height = mainContainer.nativeElement.scrollHeight;
 
@@ -66,56 +63,41 @@ function musicalNotes(mainContainer: ElementRef) {
       const timeStep = 1 / 60;
 
       // init objects and physics array
-      const renderedObjects: Array<any> = [];
+      let renderedObjects: Array<THREE.Group<THREE.Object3DEventMap>> = [];
 
-      const maxNumberOfObjects = 10;
+      //obtain model dimensions
+      let boundingBox = new THREE.Box3();
+      boundingBox.setFromObject(musicalNoteModel);
+      var modelWidth = boundingBox.max.x - boundingBox.min.x;
+      var modelHeight = boundingBox.max.y - boundingBox.min.y;
+
+      //create a line of notes
+      createOddLine(
+        musicalNoteModel,
+        sceneWidth,
+        sceneHeight,
+        scene,
+        modelWidth,
+        modelHeight,
+        renderedObjects
+      );
 
       function animation(time: number) {
-        world.step(timeStep);
-        // mesh.rotation.x = time / 2000;
-        // mesh.rotation.y = time / 1000;
-
-
-        // create more objects if the target isnt reached
-        if (renderedObjects.length < maxNumberOfObjects) {
-          const currentNumberOfObjects = renderedObjects.length;
-          for (
-            let i = 0;
-            i < maxNumberOfObjects - currentNumberOfObjects;
-            ++i
-          ) {
-            const musicalNoteClone = musicalNoteModel.clone();
-            scene.add(musicalNoteClone);
-
-            const shape = new CANNON.Body({
-              mass: 1,
-              shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
-              position: new CANNON.Vec3(sceneWidth / 2, sceneHeight / 2, 0),
-            });
-            world.addBody(shape);
-
-            shape.collisionResponse = false;
-
-            let randFloat = THREE.MathUtils.randFloat(0, 3);
-            shape.applyForce(
-              new CANNON.Vec3(-1 * 5 + randFloat, -2, 0),
-              new CANNON.Vec3(0, 0, 0)
-            );
-
-            renderedObjects.push([musicalNoteClone, shape]);
+        //remove out of fov objects
+        let i = 0;
+        while (i < renderedObjects.length) {
+          if (renderedObjects[i].position.y < -sceneHeight / 2 - modelHeight) {
+            scene.remove(renderedObjects[i]);
+            renderedObjects.splice(i, 1);
+          } else {
+            i++;
           }
         }
 
-        //update object physics
-        renderedObjects.forEach((entry) => {
-          entry[0].position.copy(entry[1].position);
-          entry[0].quaternion.copy(entry[1].quaternion);
+        //shift objects down
+        renderedObjects.forEach((object) => {
+          object.position.y -= 0.001;
         });
-
-        updateObjectsPhysics();
-
-        // gltf.scene.rotation.x = time / 2000;
-        // gltf.scene.rotation.y = time / 1000;
 
         const mainContainer =
           document.getElementsByClassName('main-container')[0];
@@ -141,4 +123,73 @@ function musicalNotes(mainContainer: ElementRef) {
   );
 }
 
-function updateObjectsPhysics() {}
+// function createNotesBatch(
+//   renderedObjects: Array<any>,
+//   sceneWidth: number,
+//   sceneHeight: number,
+//   world: CANNON.World,
+//   scene: THREE.Scene,
+//   numberOfNotes: number,
+//   model: THREE.Group<THREE.Object3DEventMap>
+// ) {
+//   const currentNumberOfObjects = renderedObjects.length;
+//   for (let i = 0; i < numberOfNotes; ++i) {
+//     const musicalNoteClone = model.clone();
+//     scene.add(musicalNoteClone);
+
+//     const shape = new CANNON.Body({
+//       mass: 1,
+//       shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
+//       position: new CANNON.Vec3(sceneWidth / 2, sceneHeight / 2, 0),
+//     });
+//     world.addBody(shape);
+
+//     shape.collisionResponse = false;
+
+//     //apply force
+//     let lateralForce = THREE.MathUtils.randFloat(-1, 4);
+//     let verticalForce = THREE.MathUtils.randFloat(-5, 5);
+//     shape.applyForce(
+//       new CANNON.Vec3(-1 * 5 + lateralForce, verticalForce, 0),
+//       new CANNON.Vec3(0, 0, 0)
+//     );
+
+//     renderedObjects.push([musicalNoteClone, shape]);
+//   }
+// }
+
+function createOddLine(
+  model: THREE.Group<THREE.Object3DEventMap>,
+  sceneWidth: number,
+  sceneHeight: number,
+  scene: THREE.Scene,
+  modelWidth: number,
+  modelHeight: number,
+  renderedObjects: Array<THREE.Group<THREE.Object3DEventMap>>
+) {
+  let notesPerOddLine = sceneWidth / (4 * modelWidth);
+
+  let middleNote = model.clone();
+  scene.add(middleNote);
+  middleNote.position.y = sceneHeight / 2 + modelHeight;
+
+  renderedObjects.push(middleNote);
+
+  for (let i = 1; i < notesPerOddLine + 1; ++i) {
+    let leftNote = model.clone();
+    scene.add(leftNote);
+
+    leftNote.position.x -= modelWidth * 2;
+    leftNote.position.y = sceneHeight / 2 + modelHeight;
+
+    renderedObjects.push(leftNote);
+
+    let rightNote = model.clone();
+    scene.add(rightNote);
+
+    rightNote.position.x += modelWidth * 2;
+    rightNote.position.y = sceneHeight / 2 + modelHeight;
+
+    renderedObjects.push(rightNote);
+  }
+}
