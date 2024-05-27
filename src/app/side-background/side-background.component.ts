@@ -123,41 +123,6 @@ function musicalNotes(mainContainer: ElementRef) {
   );
 }
 
-// function createNotesBatch(
-//   renderedObjects: Array<any>,
-//   sceneWidth: number,
-//   sceneHeight: number,
-//   world: CANNON.World,
-//   scene: THREE.Scene,
-//   numberOfNotes: number,
-//   model: THREE.Group<THREE.Object3DEventMap>
-// ) {
-//   const currentNumberOfObjects = renderedObjects.length;
-//   for (let i = 0; i < numberOfNotes; ++i) {
-//     const musicalNoteClone = model.clone();
-//     scene.add(musicalNoteClone);
-
-//     const shape = new CANNON.Body({
-//       mass: 1,
-//       shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
-//       position: new CANNON.Vec3(sceneWidth / 2, sceneHeight / 2, 0),
-//     });
-//     world.addBody(shape);
-
-//     shape.collisionResponse = false;
-
-//     //apply force
-//     let lateralForce = THREE.MathUtils.randFloat(-1, 4);
-//     let verticalForce = THREE.MathUtils.randFloat(-5, 5);
-//     shape.applyForce(
-//       new CANNON.Vec3(-1 * 5 + lateralForce, verticalForce, 0),
-//       new CANNON.Vec3(0, 0, 0)
-//     );
-
-//     renderedObjects.push([musicalNoteClone, shape]);
-//   }
-// }
-
 function createOddLine(
   model: THREE.Group<THREE.Object3DEventMap>,
   sceneWidth: number,
@@ -167,7 +132,7 @@ function createOddLine(
   modelHeight: number,
   renderedObjects: Array<THREE.Group<THREE.Object3DEventMap>>
 ) {
-  let notesPerOddLine = sceneWidth / (4 * modelWidth);
+  let notesPerLine = sceneWidth / (4 * modelWidth);
 
   let middleNote = model.clone();
   scene.add(middleNote);
@@ -175,11 +140,11 @@ function createOddLine(
 
   renderedObjects.push(middleNote);
 
-  for (let i = 1; i < notesPerOddLine + 1; ++i) {
+  for (let i = 1; i < notesPerLine + 1; ++i) {
     let leftNote = model.clone();
     scene.add(leftNote);
 
-    leftNote.position.x -= modelWidth * 2;
+    leftNote.position.x -= modelWidth * 2 * i;
     leftNote.position.y = sceneHeight / 2 + modelHeight;
 
     renderedObjects.push(leftNote);
@@ -187,7 +152,37 @@ function createOddLine(
     let rightNote = model.clone();
     scene.add(rightNote);
 
-    rightNote.position.x += modelWidth * 2;
+    rightNote.position.x += modelWidth * 2 * i;
+    rightNote.position.y = sceneHeight / 2 + modelHeight;
+
+    renderedObjects.push(rightNote);
+  }
+}
+
+function createEvenLine(
+  model: THREE.Group<THREE.Object3DEventMap>,
+  sceneWidth: number,
+  sceneHeight: number,
+  scene: THREE.Scene,
+  modelWidth: number,
+  modelHeight: number,
+  renderedObjects: Array<THREE.Group<THREE.Object3DEventMap>>
+) {
+  let notePairsPerLine = (sceneWidth - 2 * modelWidth) / (4 * modelWidth);
+
+  for (let i = 0; i < notePairsPerLine; ++i) {
+    let leftNote = model.clone();
+    scene.add(leftNote);
+
+    leftNote.position.x = -modelWidth - modelWidth * 2 * i;
+    leftNote.position.y = sceneHeight / 2 + modelHeight;
+
+    renderedObjects.push(leftNote);
+
+    let rightNote = model.clone();
+    scene.add(rightNote);
+
+    rightNote.position.x = modelWidth + modelWidth * 2 * i;
     rightNote.position.y = sceneHeight / 2 + modelHeight;
 
     renderedObjects.push(rightNote);
