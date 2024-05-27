@@ -31,7 +31,8 @@ function musicalNotes(mainContainer: ElementRef) {
   camera.position.z = 1;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(230 / 255, 112 / 255, 147 / 255);
+  // scene.background = new THREE.Color(94 / 255, 34 / 255, 94 / 255);
+  scene.background = new THREE.Color(59 / 255, 12 / 255, 59 / 255);
 
   // any lighting?
   const light = new THREE.AmbientLight(0xffffff, 3);
@@ -71,16 +72,10 @@ function musicalNotes(mainContainer: ElementRef) {
       var modelWidth = boundingBox.max.x - boundingBox.min.x;
       var modelHeight = boundingBox.max.y - boundingBox.min.y;
 
-      //create a line of notes
-      createOddLine(
-        musicalNoteModel,
-        sceneWidth,
-        sceneHeight,
-        scene,
-        modelWidth,
-        modelHeight,
-        renderedObjects
-      );
+      //animation variables
+      let numberOfLines = 1;
+      let topLineYPosition = 0;
+      let fallingSpeed = 0.0005;
 
       function animation(time: number) {
         //remove out of fov objects
@@ -94,10 +89,39 @@ function musicalNotes(mainContainer: ElementRef) {
           }
         }
 
+        if (topLineYPosition < sceneHeight / 2 - modelHeight / 2) {
+          if (numberOfLines % 2 == 1) {
+            createOddLine(
+              musicalNoteModel,
+              sceneWidth,
+              sceneHeight,
+              scene,
+              modelWidth,
+              modelHeight,
+              renderedObjects
+            );
+          } else {
+            createEvenLine(
+              musicalNoteModel,
+              sceneWidth,
+              sceneHeight,
+              scene,
+              modelWidth,
+              modelHeight,
+              renderedObjects
+            );
+          }
+
+          numberOfLines++;
+          topLineYPosition = sceneHeight / 2 + modelHeight;
+        }
+
         //shift objects down
         renderedObjects.forEach((object) => {
-          object.position.y -= 0.001;
+          object.position.y -= fallingSpeed;
         });
+
+        topLineYPosition -= fallingSpeed;
 
         const mainContainer =
           document.getElementsByClassName('main-container')[0];
