@@ -54,73 +54,84 @@
         &nbsp;Descarcă contractul
       </p-button>
     </div>
-    <p-accordion [multiple]="true" [activeIndex]="[]">
-      <p-accordionTab header="Servicii oferite">
-        <ul class="p-list">
-          <li>transport de la școală la after-school</li>
-          <li>masa de prânz în regim catering</li>
-          <li>ajutor în efectuarea temelor</li>
-          <li>activități reacreative</li>
-          <li>ateliere muzicale</li>
-          <li>club de lectură zilnic</li>
-        </ul>
-      </p-accordionTab>
-      <p-accordionTab header="Prețuri">
-        <p>Program normal:</p>
-        <ul class="no-dot-list">
-          <li>Program: 11:30 - 17:30</li>
-          <li>Preț: 1000 RON pe lună</li>
-        </ul>
-        <p>Program de vacanță:</p>
-        <ul class="no-dot-list">
-          <li>Program: 8:30 - 17:30</li>
-          <li>Preț: 1000 RON pe lună + 20 RON pentru fiecare zi de vacanță</li>
-        </ul>
-        <p>
-          Se oferă următoarele reduceri pentru plata în avans a taxei de
-          școlarizare:
-        </p>
-        <ul class="no-dot-list">
-          <li>plata trimestrială: 5% reducere</li>
-          <li>plata semestrială: 10% reducere</li>
-          <li>plata anuală: 15% reducere</li>
-        </ul>
-        <p>Se oferă o reducere de 10% pentru cel de al doilea copil înscris</p>
-      </p-accordionTab>
-      <p-accordionTab header="Masa de prânz">
-        <p>
-          Masa este oferită de către
-          <a id="jadoreLink" href="https://jadorebistro.ro/" target="_blank"
-            >J'Adore Bistro Brașov</a
-          >
-          și constă în:
-        </p>
-        <ul>
-          <li>Felul 1 (ciorbiță)</li>
-          <li>Felul 2</li>
-          <li>Gustare</li>
-        </ul>
-      </p-accordionTab>
-      <p-accordionTab header="Locația">
-        <p-carousel
-          [value]="images"
-          [numVisible]="1"
-          [numScroll]="1"
-          [circular]="true"
-          [autoplayInterval]="3000"
-        >
-          <ng-template let-image pTemplate="item" class="text-center w-6 h-12">
-            <div
-              class="flex justify-content-center align-content-center w-12 h-12 pareri"
+    <p-card>
+      <p-accordion [multiple]="true" [activeIndex]="[]">
+        <p-accordionTab header="Servicii oferite">
+          <ul class="p-list">
+            <li>transport de la școală la after-school</li>
+            <li>masa de prânz în regim catering</li>
+            <li>ajutor în efectuarea temelor</li>
+            <li>activități reacreative</li>
+            <li>ateliere muzicale</li>
+            <li>club de lectură zilnic</li>
+          </ul>
+        </p-accordionTab>
+        <p-accordionTab header="Prețuri">
+          <p>Program normal:</p>
+          <ul class="no-dot-list">
+            <li>Program: 11:30 - 17:30</li>
+            <li>Preț: 1000 RON pe lună</li>
+          </ul>
+          <p>Program de vacanță:</p>
+          <ul class="no-dot-list">
+            <li>Program: 8:30 - 17:30</li>
+            <li>
+              Preț: 1000 RON pe lună + 20 RON pentru fiecare zi de vacanță
+            </li>
+          </ul>
+          <p>
+            Se oferă următoarele reduceri pentru plata în avans a taxei de
+            școlarizare:
+          </p>
+          <ul class="no-dot-list">
+            <li>plata trimestrială: 5% reducere</li>
+            <li>plata semestrială: 10% reducere</li>
+            <li>plata anuală: 15% reducere</li>
+          </ul>
+          <p>
+            Se oferă o reducere de 10% pentru cel de al doilea copil înscris
+          </p>
+        </p-accordionTab>
+        <p-accordionTab header="Masa de prânz">
+          <p>
+            Masa este oferită de către
+            <a id="jadoreLink" href="https://jadorebistro.ro/" target="_blank"
+              >J'Adore Bistro Brașov</a
             >
-              <img
-                src="assets/images/location/{{ image }}"
-                class="carousel-image shadow-2"
-              />
-            </div>
-          </ng-template>
-        </p-carousel>
-      </p-accordionTab>
-    </p-accordion>
+            și constă în:
+          </p>
+          <ul>
+            <li>Felul 1 (ciorbiță)</li>
+            <li>Felul 2</li>
+            <li>Gustare</li>
+          </ul>
+        </p-accordionTab>
+        <p-accordionTab header="Locația">
+          <p-carousel
+            [value]="images"
+            [numVisible]="1"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="3000"
+          >
+            <ng-template
+              let-image
+              pTemplate="item"
+              class="text-center w-6 h-12"
+            >
+              <div
+                class="flex justify-content-center align-content-center w-12 h-12 pareri"
+              >
+                <img
+                  src="assets/images/location/{{ image }}"
+                  class="carousel-image shadow-2"
+                />
+              </div>
+            </ng-template>
+          </p-carousel>
+        </p-accordionTab>
+      </p-accordion>
+    </p-card>
   </div>
+  <div class="empty-space"></div>
 </div>

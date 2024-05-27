@@ -6,11 +6,11 @@
   //   rgba(117, 90, 145, 1) 60%,
   //   rgba(137, 120, 155, 1) 100%
   // );
+  padding-bottom: 40px;
 }
 
 .location-container {
   width: 100%;
-  padding: 40px;
   position: relative;
 }
 
@@ -60,20 +60,20 @@
 }
 
 .accordion-container {
-  margin: 40px;
+  margin: 40px 40px 0 40px;
   position: relative;
 }
 
 :host ::ng-deep .p-accordion-header > a {
   background-color: transparent !important;
   border: none;
-  color: yellow;
+  color: #495057;
   font-size: 2rem;
 }
 
 :host ::ng-deep .p-accordion-content {
   background-color: transparent !important;
-  color: yellow;
+  color: #495057;
   border: none;
 }
 
@@ -83,7 +83,7 @@
 
 #jadoreLink {
   border: none;
-  color: orange;
+  color: yellow;
   text-decoration: none;
 }
 
@@ -106,13 +106,13 @@ ul {
 
 :host ::ng-deep .p-carousel-prev {
   path {
-    fill: yellow;
+    fill: #495057;
   }
 }
 
 :host ::ng-deep .p-carousel-next {
   path {
-    fill: yellow;
+    fill: #495057;
   }
 }
 
@@ -140,7 +140,7 @@ ul {
   .p-carousel-indicators
   .p-carousel-indicator
   button {
-  background-color: pink;
+  background-color: #495057;
   transform: scale(0.5);
 }
 
@@ -158,7 +158,7 @@ ul {
 .contract-container {
   position: absolute;
   top: 20px;
-  right: 0;
+  right: 20px;
 
 }
 
@@ -169,4 +169,15 @@ ul {
     font-size: 1.5rem;
     color: yellow;
   }
+}
+
+:host ::ng-deep .accordion-container {
+  .p-card {
+    background-color: pink;
+    box-shadow: 10px 10px 10px rgb(76, 57, 96);
+  }
+}
+
+.empty-space {
+  height: 40px;
 }
