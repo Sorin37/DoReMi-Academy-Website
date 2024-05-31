@@ -9,21 +9,6 @@ import { MenubarModule } from 'primeng/menubar';
   templateUrl: './navigation-menu.component.html',
   styleUrl: './navigation-menu.component.scss',
 })
-export class NavigationMenuComponent implements OnInit {
-  items: MenuItem[] | undefined;
+export class NavigationMenuComponent {
 
-  ngOnInit() {
-    this.items = [
-      {
-        label: 'Despre noi',
-        icon: 'pi pi-fw pi-users',
-        routerLink: '/despre-noi',
-      },
-      {
-        label: 'Evenimente',
-        icon: 'pi pi-fw pi-calendar',
-        routerLink: '/evenimente',
-      }
-    ];
-  }
 }

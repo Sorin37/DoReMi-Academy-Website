@@ -1,53 +1,6 @@
-:host ::ng-deep .p-menubar {
-  padding: 0;
-  // background-color: #9C27B0;
-  // background: rgb(107,34,195);
-  // background: linear-gradient(0deg, rgba(107,34,195,1) 0%, rgba(156,39,176,1) 100%);
-  //   background: rgb(107,34,195);
-  // background: linear-gradient(180deg, rgba(107,34,195,1) 0%, rgba(156,39,176,1) 90%, rgba(156,39,176,0.6643032212885154) 100%);
-
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-}
-
-:host ::ng-deep .p-menubar-start {
-  height: 160px;
-}
-
-:host ::ng-deep .p-menuitem-content:hover {
-  background-color: transparent;
-}
-
-:host ::ng-deep .p-menubar .p-menuitem.p-focus > .p-menuitem-content {
-  background-color: transparent;
-}
-
-:host ::ng-deep .p-menuitem-icon {
-  color: yellow;
-  font-size: 1.5rem;
-}
-
-:host ::ng-deep .p-menuitem-text {
-  color: yellow;
-  font-size: 1.5rem;
-}
-
-:host ::ng-deep .p-submenu-icon {
-  color: yellow;
-}
-
-:host ::ng-deep .p-element.p-icon-wrapper {
-  color: yellow;
-}
-
-:host ::ng-deep .p-menubar-root-list {
-  background-color: transparent;
-}
-
 .menu-container {
   position: relative;
-  background: rgb(144,30,255);
+  background: rgb(144, 30, 255);
   // background: linear-gradient(
   //   180deg,
   //   rgba(107, 34, 195, 1) 0%,
@@ -57,7 +10,7 @@
   height: 160px;
 }
 
-.menu-social-media-container{
+.menu-social-media-container {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -71,9 +24,13 @@ a:hover {
   color: blue;
 }
 
-.logo{
+.logo {
   position: absolute;
   left: 0px;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
 
 .clouds-container {
@@ -81,4 +38,23 @@ a:hover {
   left: 0;
   bottom: -32px;
   z-index: 1;
+}
+
+.menu {
+  font-size: 2.5rem;
+  color: yellow;
+  font-weight: 500;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+
+  a {
+    color: yellow;
+    text-decoration: none;
+  }
+
+  a:hover {
+    font-style: italic;
+    cursor: pointer;
+  }
 }
