@@ -47,13 +47,13 @@
 
 .menu-container {
   position: relative;
-  background: rgb(107, 34, 195);
-  background: linear-gradient(
-    180deg,
-    rgba(107, 34, 195, 1) 0%,
-    rgba(156, 39, 176, 1) 70%,
-    rgba(176, 101, 39, 1) 100%
-  );
+  background: rgb(144,30,255);
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(107, 34, 195, 1) 0%,
+  //   rgba(156, 39, 176, 1) 70%,
+  //   rgba(176, 101, 39, 1) 100%
+  // );
   height: 160px;
 }
 
@@ -76,4 +76,9 @@ a:hover {
   left: 0px;
 }
 
-
+.clouds-container {
+  position: absolute;
+  left: 0;
+  bottom: -32px;
+  z-index: 1;
+}
