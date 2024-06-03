@@ -25,12 +25,48 @@
       >
     </div>
   </div>
+  <div class="collapsable-menu">
+    <p-button
+      icon="pi pi-bars"
+      [rounded]="true"
+      size="large"
+      (click)="openMenu()"
+    />
+    <div class="popup-menu-container" (click)="closeMenu()">
+      <div class="popup-menu">
+        <div>
+          <a routerLink="/"
+            ><i
+              class="pi pi-fw pi-home"
+              style="font-size: 3rem; margin-right: 5px"
+            ></i
+            >Acasă</a
+          >
+        </div>
+        <div>
+          <a href="/despre-noi"
+            ><i
+              class="pi pi-fw pi-users"
+              style="font-size: 3rem; margin-right: 5px"
+            ></i
+            >Despre Noi</a
+          >
+        </div>
+        <div>
+          <a href="/evenimente"
+            ><i
+              class="pi pi-fw pi-calendar"
+              style="font-size: 3rem; margin-right: 5px"
+            ></i
+            >Evenimente</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="menu-social-media-container">
     <a href="https://www.instagram.com" target="_blank" class="instagram-icon">
-      <i
-        class="pi pi-fw pi-instagram"
-        style="margin-right: 5px"
-      ></i
+      <i class="pi pi-fw pi-instagram" style="margin-right: 5px"></i
     ></a>
     <a
       href="https://www.facebook.com/profile.php?id=100094602287075"
