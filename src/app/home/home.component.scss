@@ -93,12 +93,13 @@
   }
 }
 
-:host ::ng-deep .main-card.reverse {
+:host ::ng-deep .main-card-reverse {
   margin: 40px;
   width: 75%;
 
   .p-card {
     background-color: pink;
+    box-shadow: 10px 10px 10px rgb(76, 57, 96);
   }
 
   .p-card-content {
@@ -122,13 +123,45 @@
       margin: 0;
       height: 100px;
       width: 100px;
+      box-shadow: none;
     }
   }
 
   .text-div {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     flex-grow: 1;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  :host ::ng-deep .main-card {
+    margin: 15px 30px 15px 10px;
+    width: calc(100% - 40px);
+
+    .p-card-content {
+      flex-direction: column;
+
+      .icon-div {
+        width: 100%;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  :host ::ng-deep .main-card-reverse {
+    margin: 15px 10px 15px 30px;
+    width: calc(100% - 40px);
+
+    .p-card-content {
+      flex-direction: column;
+
+      .icon-div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+      }
+    }
   }
 }

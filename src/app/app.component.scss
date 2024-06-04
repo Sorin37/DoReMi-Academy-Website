@@ -16,18 +16,17 @@
   overflow-y: scroll;
 }
 
-// @media only screen and (max-width: 767px) {
-//   .displayed-page {
-//     width: 100%;
-//   }
-//   app-side-background {
-//     width: 0%;
-//     visibility: hidden;
-//   }
-// }
-
 app-side-background {
   width: 15%;
 }
 
+@media only screen and (max-width: 767px) {
+  .displayed-page {
+    width: 100%;
+  }
+  app-side-background {
+    width: 0%;
+    visibility: hidden;
+  }
+}
 
