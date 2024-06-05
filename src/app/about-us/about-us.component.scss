@@ -12,6 +12,16 @@
   width: 100%;
   padding: 40px;
   position: relative;
+  display: flex;
+  flex-direction: row;
+
+  .contact-container {
+    width: 50%;
+  }
+
+  .map-container {
+    width: 50%;
+  }
 }
 
 .opening-date-container {
@@ -99,7 +109,7 @@ ul {
   object-fit: cover;
 }
 
-.pareri {
+.carousel-container {
   height: min(50vh, 66vw);
   width: min(50vh, 66vw);
 }
@@ -179,4 +189,41 @@ ul {
 
 .empty-space {
   height: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+  .location-container {
+    padding: 35px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .contact-container {
+      width: 100%;
+      gap: 20px;
+      .p-element {
+        width: 100% !important;
+      }
+    }
+    .map-container {
+      width: 100%;
+    }
+  }
+
+  .contract-container {
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .accordion-container {
+    margin: 0 20px 0 20px;
+    padding-top: 70px;
+  }
+
+  .empty-space {
+    height: 20px;
+  }
 }

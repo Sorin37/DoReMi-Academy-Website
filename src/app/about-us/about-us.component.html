@@ -8,40 +8,36 @@
     11 sept 2023
   </div> -->
   <div class="location-container">
-    <div class="flex flex-row w-full">
-      <div
-        class="w-6 flex flex-column justify-content-around contact-container"
-      >
-        <div class="flex flex-row justify-content-center">
-          <p-card class="w-10">
-            <div class="flex flex-row align-content-center gap-3">
-              <div>
-                <i class="pi pi-fw pi-phone" style="font-size: 2rem"></i>
-              </div>
-              <div class="flex flex-row align-items-center text-xl">
-                0734 214 466
-              </div>
+    <div class="flex flex-column justify-content-around contact-container">
+      <div class="flex flex-row justify-content-center">
+        <p-card class="w-10">
+          <div class="flex flex-row align-content-center gap-3">
+            <div>
+              <i class="pi pi-fw pi-phone" style="font-size: 2rem"></i>
             </div>
-          </p-card>
-        </div>
-        <div class="flex flex-row justify-content-center">
-          <p-card class="w-10">
-            <div class="flex flex-row align-content-center gap-3">
-              <div>
-                <i class="pi pi-fw pi-envelope" style="font-size: 2rem"></i>
-              </div>
-              <div class="flex flex-row align-items-center text-xl">
-                doremibrasov&commat;gmail.com
-              </div>
-            </div></p-card
-          >
-        </div>
+            <div class="flex flex-row align-items-center text-xl">
+              0734 214 466
+            </div>
+          </div>
+        </p-card>
       </div>
-      <div class="w-6 map-container">
-        <google-map height="50vh" width="100%" [center]="location" [zoom]="15">
-          <map-marker [position]="location" [options]="options"> </map-marker>
-        </google-map>
+      <div class="flex flex-row justify-content-center">
+        <p-card class="w-10">
+          <div class="flex flex-row align-content-center gap-3">
+            <div>
+              <i class="pi pi-fw pi-envelope" style="font-size: 2rem"></i>
+            </div>
+            <div class="flex flex-row align-items-center text-xl">
+              doremibrasov&commat;gmail.com
+            </div>
+          </div></p-card
+        >
       </div>
+    </div>
+    <div class="map-container">
+      <google-map height="50vh" width="100%" [center]="location" [zoom]="15">
+        <map-marker [position]="location" [options]="options"> </map-marker>
+      </google-map>
     </div>
   </div>
   <div class="accordion-container">
@@ -120,7 +116,7 @@
               class="text-center w-6 h-12"
             >
               <div
-                class="flex justify-content-center align-content-center w-12 h-12 pareri"
+                class="flex justify-content-center align-content-center w-12 h-12 carousel-container"
               >
                 <img
                   src="assets/images/location/{{ image }}"
