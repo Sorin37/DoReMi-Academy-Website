@@ -226,4 +226,13 @@ ul {
   .empty-space {
     height: 20px;
   }
+
+  :host ::ng-deep .p-accordion-content {
+    padding: 0;
+  }
+
+  .carousel-container {
+    height: 30vw;
+    width: 30vw;
+  }
 }
